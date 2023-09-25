@@ -1,27 +1,40 @@
+import 'package:chat/constants.dart';
 import 'package:chat/screens/register_screen.dart';
 import 'package:chat/widgets/custom_button.dart';
 import 'package:chat/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+   const LoginScreen({super.key});
+
+   static String id= 'LoginScreen';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff2B457E),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-
+      backgroundColor: kPrimaryColor,
+      body: ListView(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         children: [
-          Image.asset('assets/images/scholar.png'),
-          const Text(
-            'Scholar Chat',
-            style: TextStyle(
-              fontSize: 32,
-              color: Colors.white,
-              fontFamily: 'pacifico'
-            ),
+          const SizedBox(
+            height: 75,
+          ),
+          Image.asset(
+              'assets/images/scholar.png',
+            height: 100,
+          ),
+          const Row( 
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+               Text(
+                'Scholar Chat',
+                style: TextStyle(
+                  fontSize: 32,
+                  color: Colors.white,
+                  fontFamily: 'pacifico'
+                ),
+              ),
+            ],
           ),
           const SizedBox(
             height: 36,
@@ -48,7 +61,7 @@ class LoginScreen extends StatelessWidget {
               icon: Icon(Icons.password),
           ),
           const SizedBox(
-            height: 16,
+            height: 8.0,
           ),
           const CustomButton(buttonText: 'Login'),
            Row(
@@ -62,10 +75,7 @@ class LoginScreen extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: (){
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) {
-                        return const RegisterScreen();
-                      }));
+                  Navigator.pushNamed(context, RegisterScreen.id);
                 },
                 child:const Text(' REGISTER NOW !',
                   style: TextStyle(
